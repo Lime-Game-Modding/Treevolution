@@ -8,10 +8,39 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "CSVEditor",
+"language": "GDScript",
+"path": "res://Addons/file-editor/scripts/CSVEditor.gd"
+}, {
+"base": "HTTPRequest",
+"class": "GoogleTranslateAPI",
+"language": "GDScript",
+"path": "res://Addons/file-editor/scripts/GoogleTranslatorAPI.gd"
+} ]
+_global_script_class_icons={
+"CSVEditor": "",
+"GoogleTranslateAPI": ""
+}
+
 [application]
 
 config/name="Treevolution"
-config/icon="res://icon.png"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Lime Inc/Treevolution"
+config/icon="res://Assets/icon.png"
+config/auto_accept_quit=false
+config/quit_on_go_back=false
+
+[autoload]
+
+Global="*res://Scripts/GLOBAL.gd"
+LastOpenedFiles="*res://addons/file-editor/scripts/LastOpenedFiles.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/FileSystemView/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/file-editor/plugin.cfg" )
 
 [gui]
 
@@ -23,4 +52,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Assets/default_env.tres"
