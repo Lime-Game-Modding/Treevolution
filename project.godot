@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "FarmPlot",
 "language": "GDScript",
-"path": "res://FarmPlot.gd"
+"path": "res://Scripts/FarmPlot.gd"
 }, {
 "base": "HTTPRequest",
 "class": "GoogleTranslateAPI",
@@ -39,6 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Treevolution"
+run/main_scene="res://Scenes/Spatial.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Lime Inc/Treevolution"
 config/icon="res://Assets/icon.png"

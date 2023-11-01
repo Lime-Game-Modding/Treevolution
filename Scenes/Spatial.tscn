@@ -55,5 +55,9 @@ transform = Transform( 120, 0, 0, 0, 1, 0, 0, 0, 80, 0, 0, 0 )
 
 [node name="Game Manager" type="Spatial" parent="."]
 
-[node name="PlotManager" type="Spatial" parent="Game Manager"]
+[node name="PlotManager" type="Node" parent="Game Manager"]
 script = ExtResource( 7 )
+
+[node name="uiRoot" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
