@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Addons/file-editor/scripts/CSVEditor.gd"
 }, {
+"base": "Reference",
+"class": "FarmPlot",
+"language": "GDScript",
+"path": "res://FarmPlot.gd"
+}, {
 "base": "HTTPRequest",
 "class": "GoogleTranslateAPI",
 "language": "GDScript",
 "path": "res://Addons/file-editor/scripts/GoogleTranslatorAPI.gd"
+}, {
+"base": "Reference",
+"class": "Plot",
+"language": "GDScript",
+"path": "res://Scripts/Plot.gd"
 } ]
 _global_script_class_icons={
 "CSVEditor": "",
-"GoogleTranslateAPI": ""
+"FarmPlot": "",
+"GoogleTranslateAPI": "",
+"Plot": ""
 }
 
 [application]

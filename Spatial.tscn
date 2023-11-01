@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Nature (KENNEYS)/GLTF format/ground_grass.glb" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/wallWindowSmall.glb" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/roofCornerRound.glb" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/wallDoor.glb" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/wallCurved.glb" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/roof.glb" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/PlotManager.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Nature (KENNEYS)/GLTF format/bridge_center_stone.glb" type="PackedScene" id=8]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 22, 46.03 )
+
+[node name="bridge_center_stone" parent="." instance=ExtResource( 8 )]
+transform = Transform( 10, 0, -3.55271e-14, 0, 10, 0, 3.55271e-14, 0, 10, 0, -2, 35 )
+
+[node name="House" type="Spatial" parent="."]
+transform = Transform( 10, 0, -3.55271e-14, 0, 10, 0, 3.55271e-14, 0, 10, 0, 0, -15 )
+
+[node name="wallDoor" parent="House" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="wallWindowSmall" parent="House" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.9, 0, -0.9 )
+
+[node name="wallWindowSmall2" parent="House" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.9, 0, 0 )
+
+[node name="wallCurved" parent="House" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.8, 0, -0.9 )
+
+[node name="wallCurved2" parent="House" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.8, 0, -0.9 )
+
+[node name="roofCornerRound2" parent="House" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.8, 1, -0.900001 )
+
+[node name="roofCornerRound" parent="House" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, 1, -0.9 )
+
+[node name="roof" parent="House" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.19744e-15, 1, -0.9 )
+
+[node name="roof2" parent="House" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.9, 1, -0.9 )
+
+[node name="roof3" parent="House" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.9, 1, -0.9 )
+
+[node name="ground_grass" parent="." instance=ExtResource( 1 )]
+transform = Transform( 120, 0, 0, 0, 1, 0, 0, 0, 80, 0, 0, 0 )
+
+[node name="Game Manager" type="Spatial" parent="."]
+
+[node name="PlotManager" type="Spatial" parent="Game Manager"]
+script = ExtResource( 7 )
