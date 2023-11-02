@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Assets/Nature (KENNEYS)/GLTF format/ground_grass.glb" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Nature (KENNEYS)/Colision/ground_grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/wallWindowSmall.glb" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/roofCornerRound.glb" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/wallDoor.glb" type="PackedScene" id=4]
@@ -8,11 +8,36 @@
 [ext_resource path="res://Assets/Fantasy Town (KENNEYS)/GLTF format/roof.glb" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/PlotManager.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Nature (KENNEYS)/GLTF format/bridge_center_stone.glb" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/CashManager.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/uiRoot.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Root.gd" type="Script" id=12]
 
-[node name="Spatial" type="Spatial"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.160784, 0.160784, 0.188235, 0.588235 )
+border_width_left = 2
+border_width_bottom = 2
+corner_radius_bottom_left = 20
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 22, 46.03 )
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.160784, 0.160784, 0.188235, 0.588235 )
+border_width_left = 2
+border_width_bottom = 2
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.1596, 0.161627, 0.19, 0.588235 )
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Root" type="Spatial"]
+script = ExtResource( 12 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92937, 9.05963 )
 
 [node name="bridge_center_stone" parent="." instance=ExtResource( 8 )]
 transform = Transform( 10, 0, -3.55271e-14, 0, 10, 0, 3.55271e-14, 0, 10, 0, -2, 35 )
@@ -50,14 +75,49 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.9, 1
 [node name="roof3" parent="House" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.9, 1, -0.9 )
 
-[node name="ground_grass" parent="." instance=ExtResource( 1 )]
-transform = Transform( 120, 0, 0, 0, 1, 0, 0, 0, 80, 0, 0, 0 )
-
-[node name="Game Manager" type="Spatial" parent="."]
-
-[node name="PlotManager" type="Node" parent="Game Manager"]
-script = ExtResource( 7 )
-
 [node name="uiRoot" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="TopRightBar" type="Panel" parent="uiRoot"]
+anchor_left = 0.811
+anchor_right = 1.001
+anchor_bottom = 0.085
+margin_left = -0.500122
+margin_right = -1.50012
+margin_bottom = -0.25
+custom_styles/panel = SubResource( 1 )
+
+[node name="CashPanel" type="Panel" parent="uiRoot/TopRightBar"]
+anchor_left = 0.563
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 0.107986
+custom_styles/panel = SubResource( 2 )
+
+[node name="CashDisplay" type="Label" parent="uiRoot/TopRightBar/CashPanel"]
+anchor_right = 1.0
+anchor_bottom = 0.889
+margin_bottom = -0.00400162
+align = 1
+valign = 1
+
+[node name="Placeholder" type="Panel" parent="uiRoot/TopRightBar"]
+anchor_right = 0.563
+anchor_bottom = 0.444
+margin_right = 0.107986
+margin_bottom = 0.0319977
+custom_styles/panel = SubResource( 3 )
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="PlotManager" type="Node" parent="Managers"]
+script = ExtResource( 7 )
+
+[node name="CashManager" type="Node" parent="Managers"]
+script = ExtResource( 9 )
+cash = 2000
+
+[node name="ground_grass" parent="." instance=ExtResource( 1 )]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )

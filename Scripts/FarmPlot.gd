@@ -6,4 +6,4 @@ func _init(position:Vector2):
 	pos = position
 
 func _to_string():
-	return str(pos)
+	return "%s : %s" % [pos.x, pos.y]
