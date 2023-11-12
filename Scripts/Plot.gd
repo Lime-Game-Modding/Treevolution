@@ -13,6 +13,10 @@ func _init(size:Vector2, _loading:bool):
 	for i in range(size.x):
 		var yArray = []
 		for j in range(size.y):
-			var plot = FarmPlot.new(Vector2(i,j))
+			var plotNode = Node.new()
+			var plotRigidBody = RigidBody.new()
+			plotNode.add_child(plotRigidBody)
+			var plot = FarmPlot.new(Vector2(i,j), plotRigidBody)
+			plotNode.set_script(plot)
 			yArray.append(plot)
 		FarmSquareArray[i] = yArray
