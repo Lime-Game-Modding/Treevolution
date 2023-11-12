@@ -2,7 +2,7 @@ class_name Plot
 
 export var Size: Vector2
 export var TopleftCoordinate: Vector2
-var FarmSquareArray = []
+var FarmSquareArray : Array = []
 
 
 func _init(size:Vector2, _loading:bool):
@@ -13,10 +13,6 @@ func _init(size:Vector2, _loading:bool):
 	for i in range(size.x):
 		var yArray = []
 		for j in range(size.y):
-			var plotNode = Node.new()
-			var plotRigidBody = RigidBody.new()
-			plotNode.add_child(plotRigidBody)
-			var plot = FarmPlot.new(Vector2(i,j), plotRigidBody)
-			plotNode.set_script(plot)
+			var plot = FarmPlot.new(Vector3(i, 0, j))
 			yArray.append(plot)
 		FarmSquareArray[i] = yArray
